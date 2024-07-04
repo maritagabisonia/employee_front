@@ -1,0 +1,14 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  .form-card{
+    margin-right: 30px;
+  }
+  .button-plus{
+    align-items: center;
+    margin-left: 60px;
+    margin-right: 60px;
+  }

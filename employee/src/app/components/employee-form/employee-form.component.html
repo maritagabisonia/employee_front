@@ -1,0 +1,73 @@
+<div class="form-container">
+<form [formGroup]="empForm"  >
+  <div class="form-content">
+    <p-floatLabel class="form-field p-field p-float-label">
+      <input pInputText id="firstName" formControlName="firstName" required />
+      <label for="firstName">firstName</label>
+    </p-floatLabel>
+
+    <p-floatLabel class="form-field">
+      <input pInputText id="lastName" formControlName="lastName" required />
+      <label for="lastName">lastName</label>
+    </p-floatLabel>
+
+    <p-floatLabel class="form-field">
+      <input pInputText id="age" formControlName="age" required />
+      <label for="age">age</label>
+    </p-floatLabel>
+
+    <p-floatLabel class="form-field">
+      <input pInputText id="personId" formControlName="personId" required />
+      <label for="personId">personId</label>
+    </p-floatLabel>
+
+
+
+    <p-dropdown  
+      class="form-field"
+      [options]="professions" 
+      optionLabel="profession" 
+      optionValue="id"
+      [showClear]="true" 
+      placeholder="Select a profession"
+      formControlName="professionId">/>
+    </p-dropdown>
+
+    <div formArrayName="contactsDetails" class="contactsDetails">
+      <div *ngFor="let contact of contactsDetails.controls; let i = index" [formGroupName]="i" class="phoneNumbers">
+        <p-floatLabel class="form-field phoneNumber">
+          <input pInputText id="phoneNumber" formControlName="phoneNumber" required />
+          <label for="phoneNumber">Phone Number</label>
+        </p-floatLabel>
+      </div>
+      <p-button 
+        class="plusButton"
+        icon="pi pi-plus" 
+        [rounded]="true" 
+        [text]="true" 
+        (click)="addContact()"
+        severity="info" />
+    </div>
+
+
+    <!-- <p-button type="submit"  label="Submit" [disabled]="!employeeForm.valid" /> -->
+
+    <p-toast />
+    <p-confirmDialog />
+    <p-button class = "saveButton" (click)="confirm1($event)"  label="Save" [disabled]="!empForm.valid"  [outlined]="true" />
+    <p-button (click)="confirm2($event)" label="Delete" severity="danger" [outlined]="true" />
+  </div>
+   
+</form>
+ <p-checkbox  
+ class="checkBox"
+  [(ngModel)]="checked"
+  [binary]="true" 
+  inputId="binary"
+  (onChange)="toggleForm($event)"         
+  >
+</p-checkbox >
+
+
+</div>
+

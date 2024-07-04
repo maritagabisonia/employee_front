@@ -1,0 +1,107 @@
+<div class="table-container">
+<p-table [value]="employees" [paginator]=true [rows]=5 [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="id">Id <p-sortIcon field = "id"></p-sortIcon></th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Person Id</th>
+            <!-- <th>Profession Id</th> -->
+            <th>Profession</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-employee>
+        <tr>
+            <td>{{employee.id}} </td>
+            <td>{{employee.firstName}} </td>
+            <td> {{employee.lastName}} </td>
+            <td>{{employee.age}} </td>
+            <td>{{employee.personId}} </td>
+            <!-- <td>{{employee.professionId}} </td> -->
+            <td> {{employee.profession}} </td>
+            <td>
+              <p-toast />
+              <p-confirmPopup />
+                <p-button 
+                    pRipple 
+                    icon="pi pi-pencil" 
+                    class="mr-2 space-between-buttons" 
+                    [rounded]="true" 
+                    [outlined]="true" 
+                    severity="success"
+                    (click)="showDialog(employee)"
+                   
+                      />
+                <p-button 
+                    pRipple 
+                    icon="pi pi-trash" 
+                    severity="danger" 
+                    [rounded]="true" 
+                    [outlined]="true" 
+                    (click)="confirm2($event, employee)"
+                    severity="danger"
+                    />
+  
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+ 
+  <div class="button-container">
+    <p-button label="Add Employee" severity="info" (click)="goToAddPage()" />
+  </div>
+
+
+
+  <p-dialog header="Edit Profile"   [modal]="true" [(visible)]="visible" [style]="{ width: '40rem' }">
+    <div class="form-container">
+      <form [formGroup]="updateEmployeeForm"   (ngSubmit)="UpdateEmployee()">
+        <div class="form-content">
+          
+          <p-floatLabel class="form-field p-field p-float-label">
+            <input pInputText id="firstName" formControlName="firstName" required />
+            <label for="firstName">firstName</label>
+          </p-floatLabel>
+      
+          <p-floatLabel class="form-field">
+            <input pInputText id="lastName" formControlName="lastName" required />
+            <label for="lastName">lastName</label>
+          </p-floatLabel>
+      
+          <p-floatLabel class="form-field">
+            <input pInputText id="age" formControlName="age" required />
+            <label for="lastName">age</label>
+          </p-floatLabel>
+      
+          <p-floatLabel class="form-field">
+            <input pInputText id="personId" formControlName="personId" required />
+            <label for="personId">personId</label>
+          </p-floatLabel>
+      
+          <p-dropdown  
+          class="form-field"
+          [options]="professions" 
+          optionLabel="profession" 
+          optionValue="id"
+          [showClear]="true" 
+          placeholder="Select a profession"
+          formControlName="professionId">/>
+         </p-dropdown>
+      
+
+          <!-- <p-button type="submit"  label="update" [disabled]="!updateEmployeeForm.valid"   /> -->
+          <p-button (click)="confirm1($event)"  label="update" [disabled]="!updateEmployeeForm.valid"  [outlined]="true" />
+        </div>
+      
+      
+         
+      </form>
+      
+      </div>
+
+</p-dialog>

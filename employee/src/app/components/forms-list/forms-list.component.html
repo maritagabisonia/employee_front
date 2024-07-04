@@ -1,0 +1,21 @@
+<div class="form-container">
+    <div class="form-card" *ngFor="let form of employeeForms; let i = index">
+        <app-employee-form></app-employee-form>
+    </div>
+    <div class="button-plus">
+        <p-button 
+           icon="pi pi-plus" 
+           (click)="addNewForm()"
+           [rounded]="true" 
+           [text]="true" 
+           [raised]="true"
+           severity="help" />
+    </div>
+    <button  
+    pButton 
+    pRipple 
+    label="Submit" 
+    class="p-button-success"
+    (click)="addList()">
+</button>
+</div>
