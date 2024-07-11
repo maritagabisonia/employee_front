@@ -1,9 +1,9 @@
 <div class="table-container">
-<p-table [value]="employees" [paginator]=true [rows]=5 [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [value]="employees" [paginator]=true [rows]=5 [tableStyle]="{ 'min-width': '50rem' }" class="main-table">
     <ng-template pTemplate="header">
         <tr>
             <th pSortableColumn="id">Id <p-sortIcon field = "id"></p-sortIcon></th>
-            <th>First Name</th>
+            <th class="first">First Name</th>
             <th>Last Name</th>
             <th>Age</th>
             <th>Person Id</th>

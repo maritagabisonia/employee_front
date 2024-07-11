@@ -47,3 +47,7 @@ input[pInputText] {
   
 }
 
+::ng-deep .table-container .first {
+  background-color: red;
+  border-radius: 50px;
+}
